@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block css_add %}
+<link rel="stylesheet" href=" {% static 'horoscope/css/index.css' %}">
+{% endblock %}
+
+
+{% block title%}
+Меню
+{% endblock %}
+
+
+{% block content%}
+{% include 'horoscope/includes/navbar.html' %}
+<h1>Приложение Гороскоп</h1>
+<ul>
+    {% for zodiac in zodiacs %}
+    <li><a href="{% url 'horoscope-name' sign_zodiac=zodiac %}">{{ zodiac|title }}</a></li>
+    {% endfor %}
+</ul>
+<h2><a href="{% url 'horoscope-typelist' %}">TYPES</a></h2>
+{% endblock %}
+
+<!-- previously used
+
+        {% for zodiac in zodiacs %}
+            {% if forloop.first %}
+                <li><b>{{ forloop.counter}} {{ zodiac|title }}</b></li>
+            {% elif forloop.last %}
+                <li style="color:red"><b>{{ forloop.counter}} {{ zodiac|title }}</b></li>
+            {% else %}
+                <li>{{ forloop.counter}} {{ zodiac|title }}</li>
+
+            {% endif %}
+        {% endfor %}
+
+        {% for key, value in zodiac_dict.items %}
+            <p>{{ key }}: {{ value }}</p>
+        {% empty %}
+            <li>Sorry, no zodiac in this list.</li>
+        {% endfor %}
+
+
+
+
+
+-->

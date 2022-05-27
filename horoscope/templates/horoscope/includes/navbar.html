@@ -1,0 +1,8 @@
+<nav>
+    <a href="/horoscope"> Главная </a>
+    {% for zodiac in zodiacs %}
+        <a href="{% url 'horoscope-name' sign_zodiac=zodiac %}">{{zodiac|title}}</a>
+    {% endfor %}
+    <a href="https://www.homeenglish.ru/OtherGoroscop.htm"> Источник </a>
+</nav>
+

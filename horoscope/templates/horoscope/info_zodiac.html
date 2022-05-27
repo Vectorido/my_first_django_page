@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css_add %}
+<link rel="stylesheet" href=" {% static 'horoscope/css/info.css' %}">
+{% endblock %}
+
+
+{% block title%}
+Гороскоп для {{ title_zodiac|capfirst }}
+{% endblock %}
+
+{% block content %}
+    {% include 'horoscope/includes/navbar.html' %}
+
+    <h1>{{sign_name|capfirst}}</h1>
+    {% if description_zodiac is None %}
+        <h2> Неправильный знак зодиака - {{ title_zodiac|upper }}</h2>
+    {% else %}
+        <h2>{{description_zodiac|capfirst}}</h2>
+    {% endif %}
+
+{% endblock %}
+
+
+
+<!--
+
+    {% if my_list|length >= 3 %}
+        <p>Список из трёх или более элементов</p>
+    {% elif my_list|length == 2 %}
+        <p>Список из двух элементов</p>
+    {% else %}
+        <p>Список из одного элемента или пустой</p>
+    {% endif %}
+
+    <p>Список {{ my_list|join:" !! "}}</p>
+    <p>Кортеж {{ my_tuple|join:" /\ " }}</p>
+    <p>Словарь (длина) - {{ my_dict|length }}, значение - {{ my_dict.name }}</p>
+    <p>Экземпляр класса - {{ my_class }}. Really {{ my_class.age}}</p>
+-->
